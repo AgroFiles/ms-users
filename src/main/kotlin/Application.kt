@@ -1,6 +1,11 @@
 package com.example
 
+import com.example.models.File
+import com.example.models.FileReaders
+import com.example.models.FileWriters
+import com.example.models.Files
 import com.example.models.Users
+import com.example.routes.fileRouting
 import com.example.routes.statusRouting
 import com.example.routes.userRouting
 import io.ktor.server.application.*
@@ -37,7 +42,12 @@ fun Application.module(dotenv: Dotenv) {
     )
 
     transaction {
-        SchemaUtils.create(Users)
+        SchemaUtils.create(
+            Users,
+            Files,
+            FileReaders,
+            FileWriters
+        )
     }
 
     install(ContentNegotiation) { json() }
@@ -45,5 +55,6 @@ fun Application.module(dotenv: Dotenv) {
     routing {
         statusRouting()
         userRouting()
+        fileRouting()
     }
 }
