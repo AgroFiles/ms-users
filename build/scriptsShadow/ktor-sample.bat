@@ -70,11 +70,11 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\ktor-sample-all.jar
+set CLASSPATH=%APP_HOME%\lib\app.jar
 
 
 @rem Execute ktor-sample
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KTOR_SAMPLE_OPTS%  -classpath "%CLASSPATH%" io.ktor.server.netty.EngineMain %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %KTOR_SAMPLE_OPTS%  -classpath "%CLASSPATH%" com.example.ApplicationKt %*
 
 :end
 @rem End local scope for the variables with windows NT shell
